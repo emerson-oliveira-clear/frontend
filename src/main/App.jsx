@@ -11,6 +11,8 @@ import Footer from '../common/template/footer';
 
 import Routes from './routes'
 
+import Messages from '../common/msg/messages';
+
 
 
 export default props => (
@@ -24,6 +26,8 @@ export default props => (
 
         </div>
         <Footer />
+
+        <Messages />
     </div>
 
 
