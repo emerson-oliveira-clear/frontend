@@ -19,9 +19,9 @@ import TabHeader from "../common/tab/tabHeader";
 
 import TabContent from "../common/tab/tabContent";
 
-import { selectTab,showTabs } from "../common/tab/tabActions";
+//import { selectTab, showTabs } from "../common/tab/tabActions";
 
-import create from "billingCycleActions";
+import { init, create, update, remove } from "./billingCycleActions";
 
 import List from "./billingCycleList";
 
@@ -29,11 +29,11 @@ import Form from "./billingCycleForm";
 
 class BillingCycle extends Component {
 
-    componentWillMount(){
-        this.props.selectTab('tabList')
-        this.props.showTabs('tabList','tabCreate')
+    componentWillMount() {
+        this.props.init
+        //.props.selectTab('tabList')
+        //this.props.showTabs('tabList', 'tabCreate')
     }
-
 
     render() {
         return (
@@ -51,7 +51,7 @@ class BillingCycle extends Component {
 
                             <TabHeader label='Alterar' icon='pencil' target='tabUpdate'
                             />
-
+                            remove
                             <TabHeader label='Excluir' icon='trash-o' target='tabDElete'
                             />
 
@@ -63,22 +63,35 @@ class BillingCycle extends Component {
 
                         <TabsContent>
 
-                            <TabContent id='tabList'> 
+                            <TabContent id='tabList'>
 
-                            <List></List>
-
-                            </TabContent>
-
-                            <TabContent id='tabCreate'> 
-
-                            <Form  onSubmit={this.props.create} />
+                                <List></List>
 
                             </TabContent>
 
-                            <TabContent id='tabUpdate'> <h1>Alterar</h1>
+                            <TabContent id='tabCreate'>
+
+                                <Form onSubmit={this.props.create}
+                                    submitClass='primary'
+                                    submitLabel='Incluir'
+                                />
+
                             </TabContent>
 
-                            <TabContent id='tabDelete'><h1> Excluir</h1>
+                            <TabContent id='tabUpdate'>
+                                <Form onSubmit={this.props.update}
+                                    submitClass='info'
+                                    submitLabel='Alterar'
+                                />
+
+                            </TabContent>
+
+                            <TabContent id='tabDelete'>
+                                <Form onSubmit={this.props.remove} readOnly={true}
+
+                                    submitClass='danger'
+                                    submitLabel='Excluir'
+                                />
                             </TabContent>
 
 
@@ -90,7 +103,7 @@ class BillingCycle extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs, create }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ init, create, update, remove }, dispatch)
 
 export default connect(null, mapDispatchToProps)(BillingCycle)
 
