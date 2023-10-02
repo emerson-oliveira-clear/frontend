@@ -11,4 +11,4 @@ export default props => (
         transitionIn='fadeIn'
         transitionOut='fadeOut'
         progressBar />
-)
+)   

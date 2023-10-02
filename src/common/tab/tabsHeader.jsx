@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react'
 
-export default props =>(
-
-    <ul className="nav nav-tabs">
+export default props => (
+    <div className='nav nav-tabs'> 
         {props.children}
-    </ul>
-
+    </div> 
 )

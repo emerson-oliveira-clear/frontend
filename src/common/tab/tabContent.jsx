@@ -10,13 +10,14 @@ class TabContent extends Component {
         return (
             <If test={visible}>
                 <div id={this.props.id}
-                    className={`tab-pane ${selected ? 'active' : ''}`}> 
+                    className={`tab-pane ${selected ? 'active' : ''}`}>
                     {this.props.children}
-                </div> 
+                </div>
+
             </If>
         )
     }
 }
 
-const mapStateToProps = state => ({tab: state.tab})
+const mapStateToProps = state => ({ tab: state.tab })
 export default connect(mapStateToProps)(TabContent)
